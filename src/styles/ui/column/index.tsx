@@ -1,7 +1,12 @@
 import styled from "styled-components";
 import { ColumnAttribute } from "@/types/ui/FlexBoxAttributes.type";
 
-const Column = ({ alignItems, justifyContent, gap = 0, children }: ColumnAttribute) => {
+const Column = ({
+  alignItems = "stretch",
+  justifyContent = "flex-start",
+  gap = 0,
+  children,
+}: ColumnAttribute) => {
   return <Container style={{ alignItems, justifyContent, gap: `${gap}rem` }}>{children}</Container>;
 };
 
