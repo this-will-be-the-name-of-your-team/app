@@ -1,5 +1,5 @@
-import { GlobalStyle } from "@/styles/global";
 import { ReactNode } from "react";
+import { GlobalStyle } from "@/styles/global";
 
 const AppProvider = ({ children }: { children: ReactNode }) => {
   return (
