@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   parser: "@typescript-eslint/parser",
-  plugins: ["import", "eslint-plugin-simple-import-sort", "unused-imports", "prettier"],
+  plugins: ["import", "unused-imports", "prettier"],
   ignorePatterns: ["**/dist/*"],
   env: {
     browser: true,
@@ -34,12 +34,8 @@ module.exports = {
     "comma-dangle": ["error", "always-multiline"],
     eqeqeq: ["warn", "smart"],
     indent: ["error", 2, { SwitchCase: 1 }],
-    quotes: ["error", "auto"],
     "eol-last": "error",
     semi: ["error", "always"],
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error",
-    "jsx-quotes": ["error", "auto"],
     "no-unused-vars": ["error", { vars: "all", args: "none", ignoreRestSiblings: false }],
     "unused-imports/no-unused-imports-ts": ["error"],
     "comma-spacing": ["error", { before: false, after: true }],
