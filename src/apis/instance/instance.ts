@@ -5,21 +5,6 @@ export const instance = axios.create({
   headers: { "Content-Type": "application/json" },
 });
 
-instance.interceptors.request.use(
-  (config) => {
-    const accessToken = localStorage.getItem("accessToken");
-
-    if (accessToken) {
-      config.headers.Authorization = accessToken;
-    }
-
-    return config;
-  },
-  (error) => {
-    return error;
-  },
-);
-
 instance.interceptors.response.use(
   async (res) => {
     return res;
@@ -27,6 +12,25 @@ instance.interceptors.response.use(
   async (error) => {
     // error logic
     console.log(error);
-    return Promise.reject(error);
+    const {
+      config,
+      response: { status },
+    } = error;
+
+    if (status !== 401 || config.sent) {
+      // 401에러 제외한 에러 처리
+      return Promise.reject(error);
+    }
+
+    config.sent = true;
+    //새 토큰 발급 코드 작성
+    const accessToken = "";
+
+    if (accessToken) {
+      // 발급한 토큰 적용후 재시도
+      config.headers.Authorization = `Bearer ${accessToken}`;
+    }
+
+    return axios(config);
   },
 );
