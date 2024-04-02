@@ -27,7 +27,7 @@ dependencies:
     specifier: 14.1.4
     version: 14.1.4(react-dom@18.2.0)(react@18.2.0)
   react:
-    specifier: ^18
+    specifier: ^18.2.0
     version: 18.2.0
   react-dom:
     specifier: ^18
@@ -41,7 +41,7 @@ devDependencies:
     specifier: ^20
     version: 20.12.2
   '@types/react':
-    specifier: ^18
+    specifier: ^18.2.73
     version: 18.2.73
   '@types/react-dom':
     specifier: ^18
@@ -62,7 +62,7 @@ devDependencies:
     specifier: ^5.11.0
     version: 5.11.0
   typescript:
-    specifier: ^5
+    specifier: ^5.4.3
     version: 5.4.3
 
 packages:
