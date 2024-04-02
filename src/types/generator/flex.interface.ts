@@ -1,5 +1,7 @@
+import { CSSProperties } from "styled-components";
+
 export interface FlexProps {
-  direction?: React.CSSProperties["flexDirection"];
-  justify?: React.CSSProperties["justifyContent"];
-  align?: React.CSSProperties["alignItems"];
+  direction?: CSSProperties["flexDirection"];
+  justify?: CSSProperties["justifyContent"];
+  align?: CSSProperties["alignItems"];
 }

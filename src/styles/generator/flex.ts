@@ -1,6 +1,10 @@
 import { FlexProps } from "@/types/generator/flex.interface";
 
-const flexGenerator = ({ direction, align, justify }: FlexProps) => ({
+const flexGenerator = ({
+  direction = "row",
+  align = "stretch",
+  justify = "flex-start",
+}: FlexProps) => ({
   display: "flex",
   flexDirection: direction,
   justifyContent: justify,
