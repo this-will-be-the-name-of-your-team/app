@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { styled } from "styled-components";
 import { RowAttribute } from "@/types/ui/FlexBoxAttributes.type";
 
 const Row = ({
