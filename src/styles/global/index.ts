@@ -18,6 +18,6 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'PretendardVariable';
         src: local('PretendardVariable'), local('PretendardVariable');
         font-style: normal;
-        src: url(${Pretendard}) format('woff');
+        src: url(${Pretendard}) format('woff2');
   }
 `;
