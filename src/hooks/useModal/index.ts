@@ -1,10 +1,8 @@
-import { useState } from "react";
+import { useAtom } from "jotai";
+import { modalStateAtom } from "@/state/modal";
 
-export const useModal = (initialState: boolean, animateDuration: number) => {
-  const [isOpen, setIsOpen] = useState({
-    state: initialState,
-    animationState: initialState,
-  });
+export const useModal = (animateDuration: number) => {
+  const [isOpen, setIsOpen] = useAtom(modalStateAtom);
 
   const showModal = () => {
     setIsOpen({ ...isOpen, animationState: true });
