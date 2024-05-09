@@ -12,6 +12,9 @@ const Row = ({
 
 const Container = styled.div`
   display: flex;
+
+  width: fit-content;
+  height: fit-content;
 `;
 
 export default Row;

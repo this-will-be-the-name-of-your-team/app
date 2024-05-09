@@ -8,7 +8,7 @@ export const fontGenerator = (
 ) => css`
   font-weight: ${weight};
   font-size: ${size}rem;
-  line-height: ${lineHeight}rem;
+  line-height: ${lineHeight}%;
   letter-spacing: ${spacing}px;
 `;
 
