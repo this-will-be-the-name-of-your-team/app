@@ -7,14 +7,14 @@ import Row from "@/styles/ui/row";
 const Blog = () => {
   return (
     <S.Page>
-      <Row justifyContent="center" alignItems="center">
-        <S.GalleryText>Gallery</S.GalleryText>
-        <S.TitleText>밍글이 걸어온 발자취</S.TitleText>
-      </Row>
+        <Row justifyContent="space-between" alignItems="center">
+          <S.TitleText>
+            <S.GalleryText>Gallery</S.GalleryText>
+            밍글이 걸어온 발자취
+          </S.TitleText>
+          <div>버튼</div>
+        </Row>
       <S.GridBox>
-        <BlogContentBot />
-        <BlogContentBot />
-        <BlogContentBot />
         <BlogContentBot />
       </S.GridBox>
     </S.Page>

@@ -15,7 +15,7 @@ export const GridBox = styled.div`
   grid-gap: 8.8rem;
 `;
 
-export const GalleryText = styled.p`
+export const GalleryText = styled.span`
     color: #FF9B73;
 
     ${font.D1}
@@ -24,5 +24,5 @@ export const GalleryText = styled.p`
 export const TitleText = styled.p`
     color: #999999;
 
-    ${font.p3}
+    ${font.p5}
 `;

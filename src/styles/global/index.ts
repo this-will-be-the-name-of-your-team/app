@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import Pretendard from "../fonts/PretendardVariable.woff2";
 
 export const GlobalStyle = createGlobalStyle`
-    html {
+    body {
         margin: 0;
     }
 

@@ -11,7 +11,7 @@ const flexGenerator = ({
   alignItems: align,
 });
 
-const flex = {
+export const flex = {
   FLEX: flexGenerator({ align: "none", justify: "none" }),
   CENTER: flexGenerator({ align: "center", justify: "center" }),
   VERTICAL: flexGenerator({ align: "center" }),

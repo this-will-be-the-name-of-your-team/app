@@ -8,11 +8,11 @@ export const fontGenerator = (
 ) => css`
   font-weight: ${weight};
   font-size: ${size}rem;
-  line-height: ${lineHeight}rem;
+  line-height: ${lineHeight}%;
   letter-spacing: ${spacing}px;
 `;
 
-const font = {
+export const font = {
   D1: fontGenerator(700, 4.5, 130, -1.5),
   D2: fontGenerator(700, 3.75, 130, -0.5),
   D3: fontGenerator(700, 3, 130, 0),
@@ -30,6 +30,7 @@ const font = {
   p2: fontGenerator(400, 1, 160, -0.15),
   p3: fontGenerator(400, 0.875, 160, -0.1),
   p4: fontGenerator(400, 0.625, 160, -0.1),
+  p5: fontGenerator(400, 1.875, 160, -0.1),
 
   btn1: fontGenerator(500, 1.125, 130, 0),
   btn2: fontGenerator(500, 1, 130, 0),
