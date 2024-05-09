@@ -12,7 +12,7 @@ export const fontGenerator = (
   letter-spacing: ${spacing}px;
 `;
 
-const font = {
+export const font = {
   D1: fontGenerator(700, 4.5, 130, -1.5),
   D2: fontGenerator(700, 3.75, 130, -0.5),
   D3: fontGenerator(700, 3, 130, 0),
