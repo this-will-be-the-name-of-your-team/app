@@ -1,13 +1,14 @@
+import Link from "next/link";
 import styled from "styled-components";
 
 const Header = () => {
   return (
     <HeaderContainer>
-      <Title>MINGLE</Title>
+      <Title href="">MINGLE</Title>
       <Nav>
-        <NavItem>갤러리</NavItem>
-        <NavItem>소개</NavItem>
-        <NavItem>로그인</NavItem>
+        <NavItem href="">갤러리</NavItem>
+        <NavItem href="">소개</NavItem>
+        <NavItem href="">로그인</NavItem>
       </Nav>
     </HeaderContainer>
   );
@@ -16,7 +17,6 @@ const Header = () => {
 const HeaderContainer = styled.header`
   width: 100%;
   height: 54px;
-  top: 0px;
   position: fixed;
   color: #666666;
   display: flex;
@@ -24,11 +24,12 @@ const HeaderContainer = styled.header`
   align-items: center;
 `;
 
-const Title = styled.div`
+const Title = styled(Link)`
   font-size: 25px;
   font-weight: bold;
   color: #666666;
   margin-right: 772px;
+  text-decoration: none;
 `;
 
 const Nav = styled.nav`
@@ -36,8 +37,9 @@ const Nav = styled.nav`
   gap: 20px;
 `;
 
-const NavItem = styled.div`
+const NavItem = styled(Link)`
   color: #666666;
+  text-decoration: none;
 `;
 
 export default Header;
