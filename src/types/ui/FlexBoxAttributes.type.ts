@@ -2,6 +2,8 @@ import { ReactNode } from "react";
 import { CSSProperties } from "styled-components";
 
 export interface RowAttribute {
+  width?: CSSProperties["width"];
+  height?: CSSProperties["height"];
   justifyContent?: CSSProperties["justifyContent"];
   alignItems?: CSSProperties["alignItems"];
   gap?: CSSProperties["gap"];
@@ -9,6 +11,8 @@ export interface RowAttribute {
 }
 
 export interface ColumnAttribute {
+  width?: CSSProperties["width"];
+  height?: CSSProperties["height"];
   justifyContent?: CSSProperties["justifyContent"];
   alignItems?: CSSProperties["alignItems"];
   gap?: CSSProperties["gap"];
