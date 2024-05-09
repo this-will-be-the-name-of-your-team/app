@@ -8,10 +8,12 @@ export const GlobalStyle = createGlobalStyle`
 
     input {
         outline: none;
+        border: none;
     }
 
     button {
         outline: none;
+        border: none;
     }
 
     @font-face {
