@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
   const filename = `${Date.now()}_${file.name}`;
   try {
     const pathname = path.join(process.cwd(), "public/database/" + filename);
-    const url = path.join("/public/database/" + filename);
+    const url = path.join("/database/" + filename);
     await writeFile(pathname, buffer);
     return NextResponse.json({ status: 201, url });
   } catch (error) {
