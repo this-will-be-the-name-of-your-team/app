@@ -13,6 +13,7 @@
   "dependencies": {
     "@prisma/client": "5.11.0",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@vanilla-extract/css": "^1.15.1",
     "axios": "^1.6.8",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
