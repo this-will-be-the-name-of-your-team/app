@@ -2,10 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 import prisma from "../../../../lib/prisma";
 import { z } from "zod";
 import { isAuthenticated } from "../isAuthenticated";
+import { Post } from "@prisma/client";
 
 export async function GET() {
   const data = await prisma.post.findMany();
-  const parsedData = data.map((post) => ({ ...post, image: JSON.parse(post.image || "[]") }));
+  const parsedData = data.map((post: Post) => ({ ...post, image: JSON.parse(post.image || "[]") }));
   return NextResponse.json({ status: 200, data: parsedData });
 }
 
