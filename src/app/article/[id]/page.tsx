@@ -21,7 +21,7 @@ const ArticleData = {
   createdAt: "2024-05-09T03:15:06.616Z",
 };
 
-export default function articleDetailPage(id: number) {
+export default function articleDetailPage() {
   return (
     <>
       <Layout>
