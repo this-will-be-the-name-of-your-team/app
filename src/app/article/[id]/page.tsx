@@ -23,28 +23,26 @@ const ArticleData = {
 
 export default function articleDetailPage() {
   return (
-    <>
-      <Layout>
-        <ArticleHeadBox>
-          <TitleWithDateBox>
-            <ArticleTitle>{ArticleData.title}</ArticleTitle>
-            <ArticleDateText>{dayjs(ArticleData.createdAt).format("YYYY.MM.DD")}</ArticleDateText>
-          </TitleWithDateBox>
-          <GrayHr />
-          <Link href={`/article/${ArticleData.id}/edit`} passHref>
-            <EditButton>글 수정하기</EditButton>
-          </Link>
-        </ArticleHeadBox>
-        <ArticleContentBox>
-          <ArticleImgBox>
-            {ArticleData.image.map((url, index) => (
-              <ContentImg key={index} src={url} />
-            ))}
-          </ArticleImgBox>
-          <ArticleContent>{ArticleData.content}</ArticleContent>
-        </ArticleContentBox>
-      </Layout>
-    </>
+    <Layout>
+      <ArticleHeadBox>
+        <TitleWithDateBox>
+          <ArticleTitle>{ArticleData.title}</ArticleTitle>
+          <ArticleDateText>{dayjs(ArticleData.createdAt).format("YYYY.MM.DD")}</ArticleDateText>
+        </TitleWithDateBox>
+        <GrayHr />
+        <Link href={`/article/${ArticleData.id}/edit`} passHref>
+          <EditButton>글 수정하기</EditButton>
+        </Link>
+      </ArticleHeadBox>
+      <ArticleContentBox>
+        <ArticleImgBox>
+          {ArticleData.image.map((url, index) => (
+            <ContentImg key={index} src={url} />
+          ))}
+        </ArticleImgBox>
+        <ArticleContent>{ArticleData.content}</ArticleContent>
+      </ArticleContentBox>
+    </Layout>
   );
 }
 
