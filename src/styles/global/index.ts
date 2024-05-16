@@ -2,6 +2,10 @@ import { createGlobalStyle } from "styled-components";
 import Pretendard from "../fonts/PretendardVariable.woff2";
 
 export const GlobalStyle = createGlobalStyle`
+    * {
+        font-family: 'PretendardVariable';
+    }
+
     body {
         margin: 0;
     }
@@ -12,6 +16,10 @@ export const GlobalStyle = createGlobalStyle`
 
     button {
         outline: none;
+    }
+
+    p {
+        margin: 0;
     }
 
     @font-face {
