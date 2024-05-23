@@ -1,21 +1,21 @@
 "use client";
 
+import { ContentBox } from "./contents";
 import * as S from "./style";
-import BlogContentBot from "./contentsComponent";
 import Row from "@/styles/ui/row";
 
 const Blog = () => {
   return (
     <S.Page>
-        <Row justifyContent="space-between" alignItems="center">
-          <S.TitleText>
-            <S.GalleryText>Gallery</S.GalleryText>
-            밍글이 걸어온 발자취
-          </S.TitleText>
-          <div>버튼</div>
-        </Row>
+      <Row width="100%" justifyContent="space-between" alignItems="center">
+        <S.TitleText>
+          <S.WorkText>work </S.WorkText>
+          밍글이 걸어온 발자취
+        </S.TitleText>
+        <S.WriteButton>글 작성하기</S.WriteButton>
+      </Row>
       <S.GridBox>
-        <BlogContentBot />
+        <ContentBox />
       </S.GridBox>
     </S.Page>
   );

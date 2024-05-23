@@ -1,14 +1,13 @@
 import styled from "styled-components";
 
-const BlogContentBot = () => {
+export const ContentBox = () => {
     return(<Box></Box>);
 }
 
-export default BlogContentBot;
-
 const Box = styled.div`
-    width: 10px;
-    height: 10px;
+    /* width: fit-content; */
+    width: 50%;
+    height: 18rem;
 
     background-color: black;
 `;

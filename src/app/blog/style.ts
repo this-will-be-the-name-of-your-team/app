@@ -1,28 +1,42 @@
 import styled from "styled-components";
-import font from "@/styles/generator/font";
+import { font } from "@/styles/generator/font";
+import { theme } from "@/styles/theme";
 
 export const Page = styled.div`
-    margin: 0 auto;
-
-    padding: 0 18rem;
+  margin: 0 auto;
+  padding: 0 18rem;
 `;
 
 export const GridBox = styled.div`
   width: 100%;
 
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 8.8rem;
+  display: flex;
+  flex-wrap: wrap;
 `;
 
-export const GalleryText = styled.span`
-    color: #FF9B73;
-
-    ${font.D1}
+export const WorkText = styled.span`
+  color: ${theme.primary[500]};
+  ${font.D2_1};
 `;
 
 export const TitleText = styled.p`
-    color: #999999;
+  color: ${theme.gray[400]};
 
-    ${font.p5}
+  ${font.p5};
+`;
+
+export const WriteButton = styled.button`
+  cursor: pointer;
+
+  width: 7.3rem;
+  height: 2.5rem;
+
+  background-color: ${theme.primary[500]};
+
+  border-radius: 0.31rem;
+  border: none;
+
+  color: ${theme.base.white};
+  ${font.p2};
+  text-align: center;
 `;
