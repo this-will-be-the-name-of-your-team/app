@@ -8,10 +8,9 @@ const Header = () => {
     <HeaderContainer>
       <Title href="">MINGLE</Title>
       <Nav>
-        <NavItem href="">about</NavItem>
-        <NavItem href="">work</NavItem>
-        <NavItem href="">contact</NavItem>
-        <NavItem href="">login</NavItem>
+        <NavItem href="">ABOUT</NavItem>
+        <NavItem href="">WORK</NavItem>
+        <NavItem href="">CONTACK</NavItem>
       </Nav>
     </HeaderContainer>
   );
@@ -20,22 +19,22 @@ const Header = () => {
 const HeaderContainer = styled.header`
   ${flex.CENTER}
   width: 100%;
-  height: 54px;
+  height: 5rem;
   display: flex;
   position: fixed;
   color: #666666;
+  gap: 50rem;
 `;
 
 const Title = styled(Link)`
   ${font.H3}
   color: #666666;
-  margin-right: 772px;
   text-decoration: none;
 `;
 
 const Nav = styled.nav`
   display: flex;
-  gap: 35px;
+  gap: 2rem;
 `;
 
 const NavItem = styled(Link)`
