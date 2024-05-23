@@ -1,6 +1,7 @@
 "use client";
 
-import { ContentBox } from "./contents";
+
+import { ContentBox } from "@/components/imageUploadBox/contents";
 import * as S from "./style";
 import Row from "@/styles/ui/row";
 
