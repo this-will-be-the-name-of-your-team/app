@@ -59,6 +59,9 @@ module.exports = {
         alwaysTryTypes: true,
         project: "./src",
       },
+      node: {
+        paths: ["src"],
+      },
     },
   },
 };
