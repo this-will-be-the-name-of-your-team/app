@@ -12,10 +12,16 @@ export const GlobalStyle = createGlobalStyle`
 
     input {
         outline: none;
+        border: none;
     }
 
     button {
         outline: none;
+        border: none;
+    }
+
+    a {
+        text-decoration: none;
     }
 
     p {
@@ -23,9 +29,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     @font-face {
-        font-family: 'PretendardVariable';
-        src: local('PretendardVariable'), local('PretendardVariable');
-        font-style: normal;
+        font-family: 'Pretendard';
         src: url(${Pretendard}) format('woff2');
   }
 `;

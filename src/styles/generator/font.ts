@@ -6,6 +6,7 @@ export const fontGenerator = (
   lineHeight: number,
   spacing: number,
 ) => css`
+  font-family: "Pretendard";
   font-weight: ${weight};
   font-size: ${size}rem;
   line-height: ${lineHeight}%;
@@ -13,6 +14,7 @@ export const fontGenerator = (
 `;
 
 export const font = {
+  Keyword: fontGenerator(900, 8, 100, 0),
   D1: fontGenerator(700, 4.5, 130, -1.5),
   D2: fontGenerator(700, 3.75, 130, -0.5),
   D3: fontGenerator(700, 3, 130, 0),
@@ -26,6 +28,7 @@ export const font = {
   H5: fontGenerator(600, 1.125, 140, 0.15),
   H6: fontGenerator(600, 1, 140, 0.15),
 
+  p0: fontGenerator(400, 1.6, 160, 0.2),
   p1: fontGenerator(400, 1.125, 140, 0.15),
   p2: fontGenerator(400, 1, 160, -0.15),
   p3: fontGenerator(400, 0.875, 160, -0.1),
@@ -40,5 +43,3 @@ export const font = {
   context: fontGenerator(500, 1, 130, 0),
   code: fontGenerator(400, 1, 130, 0),
 };
-
-export default font;
