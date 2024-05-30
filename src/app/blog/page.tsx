@@ -15,7 +15,7 @@ const Blog = () => {
         <S.WriteButton>글 작성하기</S.WriteButton>
       </Row>
       <S.GridBox>
-        <WorkedContentBox img="h1" />
+        <WorkedContentBox />
       </S.GridBox>
     </S.Page>
   );

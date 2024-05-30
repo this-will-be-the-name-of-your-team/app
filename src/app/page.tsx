@@ -13,6 +13,7 @@ import Column from "@/styles/ui/column";
 import Link from "next/link";
 import ArrowIcon from "@/styles/svg/arrowIcon";
 import Text from "@/styles/ui/text";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -111,6 +112,7 @@ export default function Home() {
         </Column>
         <ContactButton href={"어딘가로갑니다"}>ming9ris@naver.com</ContactButton>
       </ContactSection>
+      <Footer />
     </Container>
   );
 }

@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import styled from "styled-components";
 
-const WorkedContentBox = ({ img }: { img: string }) => {
+const WorkedContentBox = () => {
   return (
     <Box>
       <Image src="/landing/landingImg.jpg" fill objectFit="cover" alt="workContentBox image" />
