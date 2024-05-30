@@ -16,6 +16,10 @@ export const GlobalStyle = createGlobalStyle`
         border: none;
     }
 
+    a {
+        text-decoration: none;
+    }
+
     @font-face {
         font-family: 'Pretendard';
         src: url(${Pretendard}) format('woff2');
