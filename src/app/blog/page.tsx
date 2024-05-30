@@ -1,6 +1,6 @@
 "use client";
 
-import { ContentBox } from "@/components/workedImageBox/contents";
+import WorkedContentBox from "@/components/workedContentBox";
 import * as S from "./style";
 import Row from "@/styles/ui/row";
 
@@ -15,7 +15,7 @@ const Blog = () => {
         <S.WriteButton>글 작성하기</S.WriteButton>
       </Row>
       <S.GridBox>
-        <ContentBox img="hi" />
+        <WorkedContentBox img="h1" />
       </S.GridBox>
     </S.Page>
   );

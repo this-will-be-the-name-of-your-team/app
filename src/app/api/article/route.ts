@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import prisma from "../../../../lib/prisma";
 import { z } from "zod";
 import { isAuthenticated } from "../isAuthenticated";
-import { Post } from "@prisma/client";
+import { Post } from "../../../../node_modules/.prisma/client";
 
 export async function GET() {
   const data = await prisma.post.findMany();
