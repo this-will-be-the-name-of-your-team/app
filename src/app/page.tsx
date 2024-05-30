@@ -133,7 +133,7 @@ const LandingSection = styled.section`
   justify-content: space-between;
   align-items: center;
 
-  padding: 8rem 0;
+  padding: 14rem 0 8rem 0;
   box-sizing: border-box;
 `;
 
