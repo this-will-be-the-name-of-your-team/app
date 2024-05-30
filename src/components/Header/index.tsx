@@ -6,11 +6,12 @@ import { font } from "@/styles/generator/font";
 const Header = () => {
   return (
     <HeaderContainer>
-      <Title href="">MINGLE</Title>
+      <Title href="/">MINGLE</Title>
       <Nav>
-        <NavItem href="">ABOUT</NavItem>
-        <NavItem href="">WORK</NavItem>
-        <NavItem href="">CONTACK</NavItem>
+        <NavItem href="/about">ABOUT</NavItem>
+        <NavItem href="/work">WORK</NavItem>
+        <NavItem href="/contact">CONTACT</NavItem>
+        <NavItem href="/login">LOGIN</NavItem>
       </Nav>
     </HeaderContainer>
   );
@@ -21,7 +22,7 @@ const HeaderContainer = styled.header`
   width: 100%;
   height: 5rem;
   display: flex;
-  position: fixed;
+  position: absolute;
   color: #666666;
   gap: 50rem;
 `;
