@@ -16,6 +16,7 @@ export const theme = {
   },
   gray: {
     50: "#F6F6F6",
+    80: "#ECECEC",
     100: "#EEEEEE",
     200: "#D4D4D4",
     300: "#BABABA",

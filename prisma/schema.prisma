@@ -11,7 +11,5 @@ generator client {
 model Post {
   id        Int        @id @default(autoincrement())
   title     String
-  content   String?
   image     String?
-  createdAt DateTime
 }
