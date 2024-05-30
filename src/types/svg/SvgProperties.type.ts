@@ -4,4 +4,5 @@ export interface SvgProperties {
   width?: CSSProperties["width"];
   height?: CSSProperties["height"];
   deg?: number;
+  color?: CSSProperties["color"];
 }
