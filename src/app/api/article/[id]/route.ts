@@ -11,16 +11,11 @@ export async function PUT(req: NextRequest) {
   const request = await req.json();
   const verify = z.object({
     title: z.string(),
-    content: z.string(),
-    image: z.array(z.string()),
+    image: z.string(),
   });
   const validation = verify.safeParse(request);
   if (!validation.success) return NextResponse.json({ status: 400, data: validation.error.issues });
-  const data = {
-    ...request,
-    image: JSON.stringify(request.image),
-  };
-  const { id } = await prisma.post.update({ where: { id: postId }, data });
+  const { id } = await prisma.post.update({ where: { id: postId }, data: request });
   return NextResponse.json({ status: 200, id });
 }
 
