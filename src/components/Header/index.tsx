@@ -1,19 +1,39 @@
-import Link from "next/link";
-import { styled } from "styled-components";
+"use client";
+
 import { flex } from "@/styles/generator/flex";
 import { font } from "@/styles/generator/font";
-import { theme } from "@/styles/theme";
 import HeaderLogo from "@/styles/svg/headerLogo";
+import { theme } from "@/styles/theme";
+import Link from "next/link";
+import { styled } from "styled-components";
+
+const navigateList = [
+  { href: "/", name: "ABOUT" },
+  { href: "/work", name: "WORK" },
+  { href: "/contact", name: "CONTACT" },
+];
 
 const Header = () => {
+  const accessToken = process.env.NEXT_PUBLIC_AUTHENTICATED_ACCESS_TOKEN;
+  const handleClickLogin = () => {
+    const authorization = prompt("관리자 비밀번호를 입력해주세요.");
+    console.log(authorization);
+    if (authorization === accessToken) {
+      localStorage.setItem("access_token", authorization);
+      alert("로그인 정보가 저장되었습니다.");
+      window.location.reload();
+    } else {
+      alert("비밀번호가 일치하지 않습니다.");
+    }
+  };
   return (
     <HeaderContainer>
       <HeaderLogo />
       <Nav>
-        <NavItem href="/about">ABOUT</NavItem>
-        <NavItem href="/work">WORK</NavItem>
-        <NavItem href="/contact">CONTACT</NavItem>
-        <NavItem href="/login">LOGIN</NavItem>
+        {navigateList.map((navigate) => (
+          <NavItem href={navigate.href}>{navigate.name}</NavItem>
+        ))}
+        <Login onClick={handleClickLogin}>LOGIN</Login>
       </Nav>
     </HeaderContainer>
   );
@@ -41,6 +61,21 @@ const Nav = styled.nav`
 const NavItem = styled(Link)`
   ${font.H5}
   color: #666666;
+  text-decoration: none;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  transition: 0.2s ease-out;
+
+  &:hover {
+    background-color: ${theme.gray[50]};
+  }
+`;
+
+const Login = styled.button`
+  ${font.H5}
+  color: #666666;
+  background-color: transparent;
+  cursor: pointer;
   text-decoration: none;
   padding: 1rem;
   border-radius: 0.5rem;

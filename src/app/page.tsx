@@ -1,18 +1,18 @@
 "use client";
 
+import HighlightBox from "@/components/highlightBox";
+import { HIGHLIGHTS_INFO } from "@/constants/landing";
 import { font } from "@/styles/generator/font";
-import { theme } from "@/styles/theme";
-import Row from "@/styles/ui/row";
-import { CSSProperties, styled } from "styled-components";
-import Image from "next/image";
+import ArrowIcon from "@/styles/svg/arrowIcon";
 import Mood1 from "@/styles/svg/mood1";
 import Mood2 from "@/styles/svg/mood2";
-import { HIGHLIGHTS_INFO } from "@/constants/landing";
-import HighlightBox from "@/components/highlightBox";
+import { theme } from "@/styles/theme";
 import Column from "@/styles/ui/column";
-import Link from "next/link";
-import ArrowIcon from "@/styles/svg/arrowIcon";
+import Row from "@/styles/ui/row";
 import Text from "@/styles/ui/text";
+import Image from "next/image";
+import Link from "next/link";
+import { CSSProperties, styled } from "styled-components";
 import Footer from "@/components/Footer";
 
 export default function Home() {

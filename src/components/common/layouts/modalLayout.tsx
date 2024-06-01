@@ -3,8 +3,7 @@ import {
   showModalLayoutAnimation,
 } from "@/styles/animations/modalLayout";
 import { ModalLayoutProptypes } from "@/types/components/modalLayoutAttributes.type";
-import React from "react";
-import { styled, css } from "styled-components";
+import { css, styled } from "styled-components";
 
 const ModalLayout = (options: ModalLayoutProptypes) => {
   return <Container {...options}>{options.children}</Container>;
@@ -16,7 +15,7 @@ const Container = styled.div<ModalLayoutProptypes>`
   width: 100%;
   height: 100%;
 
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
 
