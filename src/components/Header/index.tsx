@@ -33,9 +33,7 @@ const Header = () => {
         {navigateList.map((navigate) => (
           <NavItem href={navigate.href}>{navigate.name}</NavItem>
         ))}
-        {localStorage.getItem("access_token") !== accessToken && (
-          <Login onClick={handleClickLogin}>LOGIN</Login>
-        )}
+        <Login onClick={handleClickLogin}>LOGIN</Login>
       </Nav>
     </HeaderContainer>
   );

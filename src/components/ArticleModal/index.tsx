@@ -1,3 +1,5 @@
+"use client";
+
 import ModalLayout from "@/components/common/layouts/modalLayout";
 import { font } from "@/styles/generator/font";
 import CloseIcon from "@/styles/svg/closeIcon";
