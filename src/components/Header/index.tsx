@@ -1,5 +1,6 @@
 "use client";
 
+import { useHide } from "@/hooks/useHide";
 import { flex } from "@/styles/generator/flex";
 import { font } from "@/styles/generator/font";
 import HeaderLogo from "@/styles/svg/headerLogo";
@@ -14,6 +15,8 @@ const navigateList = [
 ];
 
 const Header = () => {
+  const targetRef = useHide();
+
   const accessToken = process.env.NEXT_PUBLIC_AUTHENTICATED_ACCESS_TOKEN;
   const handleClickLogin = () => {
     const authorization = prompt("관리자 비밀번호를 입력해주세요.");
@@ -27,7 +30,7 @@ const Header = () => {
     }
   };
   return (
-    <HeaderContainer>
+    <HeaderContainer ref={targetRef}>
       <HeaderLogo />
       <Nav>
         {navigateList.map((navigate) => (
@@ -44,13 +47,16 @@ const HeaderContainer = styled.header`
   width: 100%;
   height: 5rem;
   display: flex;
-  position: absolute;
+  position: fixed;
+  left: 0;
+  top: 0;
   color: #666666;
   gap: 50rem;
   background-color: ${theme.base.white};
   box-shadow: 0 0 8px ${theme.gray[200]};
 
-  z-index: 999999;
+  z-index: 100;
+  transition: 0.1s ease-out;
 `;
 
 const Nav = styled.nav`
@@ -67,7 +73,7 @@ const NavItem = styled(Link)`
   transition: 0.2s ease-out;
 
   &:hover {
-    background-color: ${theme.gray[50]};
+    background-color: ${theme.gray[100]};
   }
 `;
 
@@ -82,7 +88,7 @@ const Login = styled.button`
   transition: 0.2s ease-out;
 
   &:hover {
-    background-color: ${theme.gray[50]};
+    background-color: ${theme.gray[100]};
   }
 `;
 

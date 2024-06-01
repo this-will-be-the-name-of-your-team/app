@@ -12,20 +12,28 @@ import Row from "@/styles/ui/row";
 import Text from "@/styles/ui/text";
 import Image from "next/image";
 import Link from "next/link";
-import { CSSProperties, styled } from "styled-components";
+import { CSSProperties, styled, keyframes } from "styled-components";
 import Footer from "@/components/Footer";
+import { useScroll } from "@/hooks/useScroll";
+import { useGetWorkQuery } from "@/service/main";
+import { Article } from "@/types/components/Article.type";
 
 export default function Home() {
+  const { targetRef, scrollToTarget } = useScroll();
+  const [workData] = useGetWorkQuery();
+
+  const workBoxWidth = ["65%", "34%", "65%", "34%", "100%"];
+
   return (
     <Container>
       <LandingSection>
         <LandingSectionImg alt="landingImg" src="/landing/landingImg.jpg" fill objectFit="cover" />
         <MainText>MINGLE MOOD</MainText>
         <Row width="100%" justifyContent="center">
-          <DetailInfobutton>자세히 알아보기</DetailInfobutton>
+          <DetailInfobutton onClick={scrollToTarget}>자세히 알아보기</DetailInfobutton>
         </Row>
       </LandingSection>
-      <Section pageName="ABOUT">
+      <Section pageName="ABOUT" ref={targetRef}>
         <Mood1 />
         <DescText>
           우리는 단순한 관광을 넘어섭니다. 로컬의 정취를 고스란히 담은 장소에서, <br />
@@ -51,51 +59,20 @@ export default function Home() {
       <WorkSection pageName="WORK">
         <Column gap={1.2} width="75%">
           <WorkLinkButton>
-            <Link style={{ color: theme.gray[400] }} href={"/works"}>
-              더보기 <ArrowIcon color={theme.gray[400]} deg={270} />
+            <Link style={{ color: theme.gray[400] }} href={"/work"}>
+              <Text fontType="H4" color={theme.gray[400]}>
+                더보기 <ArrowIcon color={theme.gray[400]} deg={270} />
+              </Text>
             </Link>
           </WorkLinkButton>
           <WorkBoxSection>
-            <WorkBox width="65%" content="빅루프페스티벌">
-              <WorkBoxImage
-                alt="workboxImg"
-                src="/landing/highlights1.png"
-                fill
-                objectFit="cover"
-              />
-            </WorkBox>
-            <WorkBox width="34%" content="빅루프페스티벌">
-              <WorkBoxImage
-                alt="workboxImg"
-                src="/landing/highlights1.png"
-                fill
-                objectFit="cover"
-              />
-            </WorkBox>
-            <WorkBox width="34%" content="빅루프페스티벌">
-              <WorkBoxImage
-                alt="workboxImg"
-                src="/landing/highlights1.png"
-                fill
-                objectFit="cover"
-              />
-            </WorkBox>
-            <WorkBox width="65%" content="빅루프페스티벌">
-              <WorkBoxImage
-                alt="workboxImg"
-                src="/landing/highlights1.png"
-                fill
-                objectFit="cover"
-              />
-            </WorkBox>
-            <WorkBox width="100%" content="빅루프페스티벌">
-              <WorkBoxImage
-                alt="workboxImg"
-                src="/landing/highlights1.png"
-                fill
-                objectFit="cover"
-              />
-            </WorkBox>
+            {workData &&
+              workData.data.data.length &&
+              workData.data.data.map((e: Article) => (
+                <WorkBox width={workBoxWidth[e.id - 1]} content={e.title}>
+                  <WorkBoxImage alt="workboxImg" src={e.image} fill objectFit="cover" />
+                </WorkBox>
+              ))}
           </WorkBoxSection>
         </Column>
       </WorkSection>
@@ -110,12 +87,23 @@ export default function Home() {
             관련 정보를 상세히 남겨주시면 보다 정확한 답변을 드릴 수 있습니다.
           </Text>
         </Column>
-        <ContactButton href={"어딘가로갑니다"}>ming9ris@naver.com</ContactButton>
+        <ContactButton href={"/contact"}>ming9ris@naver.com</ContactButton>
       </ContactSection>
       <Footer />
     </Container>
   );
 }
+
+const scrollImage = keyframes`
+  0% {
+    transform: translateY(0%);
+  }
+
+  40% {
+    transform: translateY(40%);
+    z-index: -10;
+  }
+`;
 
 const Container = styled.main`
   display: flex;
@@ -142,6 +130,9 @@ const LandingSection = styled.section`
 const LandingSectionImg = styled(Image)`
   filter: brightness(80%);
   z-index: -100;
+
+  animation: ${scrollImage} ease-out;
+  animation-timeline: scroll(root block);
 `;
 
 const Section = styled.section<{ pageName: string }>`
@@ -158,6 +149,8 @@ const Section = styled.section<{ pageName: string }>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  background-color: ${theme.base.white};
 
   &::before {
     content: "${({ pageName }) => pageName}";
@@ -256,7 +249,7 @@ const DetailInfobutton = styled.button`
 
   &:hover {
     background-color: ${theme.primary[300]};
-    transform: scale(1.02) translateY(3%);
+    transform: scale(1.04);
   }
 `;
 

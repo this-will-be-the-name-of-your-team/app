@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import Pretendard from "../fonts/PretendardVariable.woff2";
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -30,8 +29,7 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0;
     }
 
-    @font-face {
-        font-family: 'Pretendard';
-        src: url(${Pretendard}) format('woff2');
-  }
+    ::-webkit-scrollbar {
+        display: none;
+    }
 `;

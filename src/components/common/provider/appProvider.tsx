@@ -6,7 +6,14 @@ import StyledComponentsRegistry from "@/app/lib/regisrty";
 import Header from "@/components/Header";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: false,
+    },
+  },
+});
 
 const AppProvider = ({ children }: { children: ReactNode }) => {
   return (
