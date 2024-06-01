@@ -1,11 +1,11 @@
+import ModalLayout from "@/components/common/layouts/modalLayout";
+import { font } from "@/styles/generator/font";
+import CloseIcon from "@/styles/svg/closeIcon";
+import { theme } from "@/styles/theme/index";
+import Row from "@/styles/ui/row";
+import { Article } from "@/types/components/Article.type";
 import React from "react";
 import { styled } from "styled-components";
-import Row from "@/styles/ui/row";
-import { theme } from "@/styles/theme/index";
-import { font } from "@/styles/generator/font";
-import ModalLayout from "@/components/common/layouts/modalLayout";
-import CloseIcon from "@/styles/svg/closeIcon";
-import { Article } from "@/types/components/Article.type";
 
 interface ArticleModalProps {
   article: Article;
@@ -15,7 +15,10 @@ interface ArticleModalProps {
 
 const ArticleModal: React.FC<ArticleModalProps> = ({ article, isOpen, onClose }) => {
   return (
-    <ModalLayout animationState={isOpen} brightness="80%" blur="10px">
+    <>
+      <ModalLayout onClick={onClose} animationState={isOpen} brightness="80%" blur="10px">
+        {undefined}
+      </ModalLayout>
       <ModalContent>
         <TitleBox>
           <Row width={"100%"} justifyContent={"space-between"}>
@@ -30,17 +33,21 @@ const ArticleModal: React.FC<ArticleModalProps> = ({ article, isOpen, onClose })
           <StyledImg src={article.image} alt={article.title} />
         </ImgBox>
       </ModalContent>
-    </ModalLayout>
+    </>
   );
 };
 
 const ModalContent = styled.div`
   background-color: ${theme.base["white"]};
-  padding: 4rem 4rem;
+  padding: 2rem 4rem;
   border-radius: 1rem;
   box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
   position: absolute;
   top: 15%;
+  z-index: 2000;
+  left: 50%;
+  top: 90%;
+  transform: translate(-50%, -50%);
 `;
 
 const TitleBox = styled.div`
@@ -61,13 +68,14 @@ const ImgBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
+  margin-top: 1rem;
   width: 100%;
 `;
 
 const StyledImg = styled.img`
   max-width: 100%;
-  height: auto;
+  height: fit-content;
+  overflow-y: hidden;
 `;
 
 const GrayHr = styled.hr`

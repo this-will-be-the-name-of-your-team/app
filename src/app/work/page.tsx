@@ -54,11 +54,11 @@ export default function ArticlePage() {
           <ArticleList>
             {data?.data.map((article: Article) => (
               <ArticleItem
-                url={article.image}
+                url={article.image.replaceAll(" ", "%20")}
                 key={article.id}
                 onClick={() => handleOpenModal(article)}
               >
-                {article.title}
+                <Text>{article.title}</Text>
               </ArticleItem>
             ))}
           </ArticleList>
@@ -117,7 +117,6 @@ const SubTitle = styled.span`
 
 const ArticleBox = styled.div`
   ${flex.COLUMN_FLEX};
-  background-color: green;
 `;
 
 const ArticleList = styled.div`
@@ -127,13 +126,20 @@ const ArticleList = styled.div`
 
 const ArticleItem = styled.div<{ url: string }>`
   cursor: pointer;
-  width: fit-content;
   width: 50%;
-  height: 40%;
-  background-image: url("/landing/contact.png");
+  height: 44vh;
+  padding: 20px 0;
+  background-image: url(${(props) => props.url});
+  background-size: cover;
+  background-repeat: no-repeat;
   &:hover {
     background-color: #e0e0e0;
   }
+`;
+
+const Text = styled.span`
+  margin: 20px;
+  ${font.H4};
 `;
 
 const UploadButton = styled.button`
