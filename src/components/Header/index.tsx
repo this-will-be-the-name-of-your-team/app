@@ -44,7 +44,7 @@ const HeaderContainer = styled.header`
   width: 100%;
   height: 5rem;
   display: flex;
-  position: fixed;
+  position: absolute;
   color: #666666;
   gap: 50rem;
   background-color: ${theme.base.white};

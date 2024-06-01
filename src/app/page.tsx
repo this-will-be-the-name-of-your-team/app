@@ -13,6 +13,7 @@ import Text from "@/styles/ui/text";
 import Image from "next/image";
 import Link from "next/link";
 import { CSSProperties, styled } from "styled-components";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -111,6 +112,7 @@ export default function Home() {
         </Column>
         <ContactButton href={"어딘가로갑니다"}>ming9ris@naver.com</ContactButton>
       </ContactSection>
+      <Footer />
     </Container>
   );
 }
