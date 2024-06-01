@@ -1,6 +1,7 @@
 "use client";
 
 import { instance } from "@/apis/instance/instance";
+import { Storage } from "@/storage";
 import { flex } from "@/styles/generator/flex";
 import { theme } from "@/styles/theme";
 import Row from "@/styles/ui/row";
@@ -32,7 +33,7 @@ const Page = () => {
 
   const handleClickUplaodPost = async () => {
     try {
-      const headers = { Authorization: process.env.NEXT_PUBLIC_AUTHENTICATED_ACCESS_TOKEN };
+      const headers = { Authorization: Storage.getItem("access_token") };
       const data = { title, image };
       await instance.post("/api/article", data, { headers });
       router.push("/");
