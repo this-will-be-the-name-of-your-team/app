@@ -5,7 +5,10 @@ import { isAuthenticated } from "../isAuthenticated";
 
 export async function GET() {
   const data = await prisma.post.findMany();
-  return NextResponse.json({ status: 200, data });
+  return NextResponse.json({
+    status: 200,
+    data: data.map((post) => ({ ...post, image: post?.image?.replaceAll("\\", "/") })),
+  });
 }
 
 export async function POST(req: NextRequest) {

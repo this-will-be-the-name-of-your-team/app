@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
     const pathname = path.join(process.cwd(), "public/database/" + filename);
     const url = path.join("/database/" + filename);
     await writeFile(pathname, buffer);
-    return NextResponse.json({ status: 201, url });
+    return NextResponse.json({ status: 201, url: url.replaceAll("\\", "") });
   } catch (error) {
     return NextResponse.json({ status: 500, data: error });
   }

@@ -21,7 +21,7 @@ const Page = () => {
       const file = files[0];
       const formData = new FormData();
       formData.append("file", file);
-      const { data } = await instance.post("/api/image", formData, {
+      const { data } = await instance.post("/image", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -35,7 +35,7 @@ const Page = () => {
     try {
       const headers = { Authorization: Storage.getItem("access_token") };
       const data = { title, image };
-      await instance.post("/api/article", data, { headers });
+      await instance.post("/article", data, { headers });
       router.push("/");
     } catch {
       alert("Internal Server Error");
