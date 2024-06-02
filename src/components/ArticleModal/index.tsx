@@ -6,6 +6,7 @@ import CloseIcon from "@/styles/svg/closeIcon";
 import { theme } from "@/styles/theme/index";
 import Row from "@/styles/ui/row";
 import { Article } from "@/types/components/Article.type";
+import Image from "next/image";
 import React from "react";
 import { styled } from "styled-components";
 
@@ -17,38 +18,34 @@ interface ArticleModalProps {
 
 const ArticleModal: React.FC<ArticleModalProps> = ({ article, isOpen, onClose }) => {
   return (
-    <>
-      <ModalLayout onClick={onClose} animationState={isOpen} brightness="80%" blur="10px">
-        {undefined}
-      </ModalLayout>
+    <ModalLayout onClick={onClose} animationState={isOpen} brightness="80%" blur="10px">
       <ModalContent>
         <TitleBox>
           <Row width={"100%"} justifyContent={"space-between"}>
             <Title>{article.title}</Title>
             <CloseButton onClick={onClose}>
-              <CloseIcon width={2} height={2} color={theme.base["black"]} />
+              <CloseIcon />
             </CloseButton>
           </Row>
           <GrayHr />
         </TitleBox>
         <ImgBox>
-          <StyledImg src={article.image} alt={article.title} />
+          <StyledImg src={article.image} alt={article.title} objectFit="contain" fill />
         </ImgBox>
       </ModalContent>
-    </>
+    </ModalLayout>
   );
 };
 
 const ModalContent = styled.div`
   background-color: ${theme.base["white"]};
-  padding: 2rem 4rem;
-  border-radius: 1rem;
+  padding: 2rem;
+  border-radius: 0.5rem;
   box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
   position: absolute;
-  top: 15%;
+  top: 50%;
   z-index: 2000;
   left: 50%;
-  top: 90%;
   transform: translate(-50%, -50%);
 `;
 
@@ -68,14 +65,17 @@ const Title = styled.div`
 
 const ImgBox = styled.div`
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
   margin-top: 1rem;
-  width: 100%;
+  width: 50vw;
+  height: 50vh;
 `;
 
-const StyledImg = styled.img`
-  max-width: 100%;
+const StyledImg = styled(Image)`
+  width: 100%;
+  max-height: 50vh;
   height: fit-content;
   overflow-y: hidden;
 `;

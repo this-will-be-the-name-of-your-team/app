@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { styled } from "styled-components";
+import Image from "next/image";
 
 const fetchArticles = async () => {
   const response = await fetch("/api/article");
@@ -58,12 +59,9 @@ export default function ArticlePage() {
         <ArticleBox>
           <ArticleList>
             {data?.data.map((article: Article) => (
-              <ArticleItem
-                url={article.image.replaceAll(" ", "%20")}
-                key={article.id}
-                onClick={() => handleOpenModal(article)}
-              >
+              <ArticleItem key={article.id} onClick={() => handleOpenModal(article)}>
                 <Text>{article.title}</Text>
+                <Image alt="articleImage" src={article.image} fill objectFit="cover" />
               </ArticleItem>
             ))}
           </ArticleList>
@@ -129,16 +127,15 @@ const ArticleList = styled.div`
   flex-wrap: wrap;
 `;
 
-const ArticleItem = styled.div<{ url: string }>`
+const ArticleItem = styled.div`
+  position: relative;
+
   cursor: pointer;
   width: 50%;
   height: 44vh;
   padding: 20px 0;
-  background-image: url(${(props) => props.url});
-  background-size: cover;
-  background-repeat: no-repeat;
   &:hover {
-    background-color: #e0e0e0;
+    filter: brightness(140%);
   }
 `;
 

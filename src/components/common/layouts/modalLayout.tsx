@@ -21,10 +21,6 @@ const Container = styled.div<ModalLayoutProptypes>`
 
   z-index: 100;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   ${({ brightness = "100%", blur = "0px" }) => css`
     backdrop-filter: blur(${blur});
     backdrop-filter: brightness(${brightness});
