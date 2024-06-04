@@ -1,7 +1,5 @@
 import { styled } from "styled-components";
 import FooterLogo from "@/styles/svg/FooterLogo";
-import Chtalk from "@/styles/svg/Chtalk";
-import FacebookLogo from "@/styles/svg/FacebookLogo";
 import InstaLogo from "@/styles/svg/InstaLogo";
 
 const Footer = () => {
@@ -12,19 +10,13 @@ const Footer = () => {
         <Text>
           상호명 : 밍글 | 대표 : 황다교
           <br />
-          ADD. 부산광역시 어쩌고 저쩌고 123-456번지 주소
+          주소 : 부산광역시 영도구 대교동1가 59
           <br />
-          T. 010-1234-5678 | F.010-1234-5678 | E. ming9ris@naver.com
+          T. 010-4347-0365 | E. ming9ris@naver.com
         </Text>
       </TextContainer>
       <IconContainer>
         <Icons>
-          <a href="https://pf.kakao.com/_xcWlWG">
-            <Chtalk />
-          </a>
-          <a href="">
-            <FacebookLogo />
-          </a>
           <a href="">
             <InstaLogo />
           </a>
