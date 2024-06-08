@@ -22,7 +22,7 @@ export default function Home() {
   const { targetRef, scrollToTarget } = useScroll();
   const [workData] = useGetWorkQuery();
 
-  const workBoxWidth = ["65%", "34%", "65%", "34%", "100%"];
+  const workBoxWidth = ["65%", "34%", "34%", "65%", "100%"];
 
   return (
     <Container>
@@ -67,8 +67,8 @@ export default function Home() {
           </WorkLinkButton>
           <WorkBoxSection>
             {workData &&
-              workData.data.data.length &&
-              workData.data.data.map((e: Article) => (
+              workData.data.data.data.length &&
+              workData.data.data.data.map((e: Article) => (
                 <WorkBox width={workBoxWidth[e.id - 1]} content={e.title}>
                   <WorkBoxImage alt="workboxImg" src={e.image} fill objectFit="cover" />
                 </WorkBox>

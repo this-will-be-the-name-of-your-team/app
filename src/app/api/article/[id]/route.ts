@@ -30,5 +30,11 @@ export async function DELETE(req: NextRequest) {
 export async function GET(req: NextRequest) {
   const id = Number(req.nextUrl.pathname.replace("/api/article/", ""));
   const data = await prisma.post.findUnique({ where: { id } });
-  return NextResponse.json({ status: 200, data });
+  return NextResponse.json({
+    status: 200,
+    data: {
+      ...data,
+      image: data?.image?.replaceAll("\\", "/"),
+    },
+  });
 }

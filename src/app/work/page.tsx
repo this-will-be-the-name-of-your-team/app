@@ -7,9 +7,10 @@ import { font } from "@/styles/generator/font";
 import { theme } from "@/styles/theme";
 import { Article } from "@/types/components/Article.type";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { styled } from "styled-components";
+import Image from "next/image";
 
 const fetchArticles = async () => {
   const response = await fetch("/api/article");
@@ -22,6 +23,7 @@ const fetchArticles = async () => {
 export default function ArticlePage() {
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   const accessToken = process.env.NEXT_PUBLIC_AUTHENTICATED_ACCESS_TOKEN;
   const isAdmin = Storage.getItem("access_token") === accessToken;
@@ -40,25 +42,26 @@ export default function ArticlePage() {
 
   if (error) return <>{error.message}</>;
 
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <Container>
       <LandingSection>
         <HGroup>
           <Title>work</Title>
           <SubTitle>밍글이 걸어온 발자취</SubTitle>
-          {isAdmin && (
+          {isMounted && isAdmin && (
             <UploadButton onClick={() => router.push("/write")}>글 작성하기</UploadButton>
           )}
         </HGroup>
         <ArticleBox>
           <ArticleList>
             {data?.data.map((article: Article) => (
-              <ArticleItem
-                url={article.image.replaceAll(" ", "%20")}
-                key={article.id}
-                onClick={() => handleOpenModal(article)}
-              >
+              <ArticleItem key={article.id} onClick={() => handleOpenModal(article)}>
                 <Text>{article.title}</Text>
+                <Image alt="articleImage" src={article.image} fill objectFit="cover" />
               </ArticleItem>
             ))}
           </ArticleList>
@@ -124,16 +127,15 @@ const ArticleList = styled.div`
   flex-wrap: wrap;
 `;
 
-const ArticleItem = styled.div<{ url: string }>`
+const ArticleItem = styled.div`
+  position: relative;
+
   cursor: pointer;
   width: 50%;
   height: 44vh;
   padding: 20px 0;
-  background-image: url(${(props) => props.url});
-  background-size: cover;
-  background-repeat: no-repeat;
   &:hover {
-    background-color: #e0e0e0;
+    filter: brightness(140%);
   }
 `;
 

@@ -6,5 +6,8 @@ export async function GET() {
     take: 5,
     orderBy: { id: "desc" },
   });
-  return NextResponse.json({ status: 200, data });
+  return NextResponse.json({
+    status: 200,
+    data: data.map((post) => ({ ...post, image: post?.image?.replaceAll("\\", "/") })),
+  });
 }

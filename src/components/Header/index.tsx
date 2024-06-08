@@ -31,7 +31,9 @@ const Header = () => {
   };
   return (
     <HeaderContainer ref={targetRef}>
-      <HeaderLogo />
+      <Link href="/">
+        <HeaderLogo />
+      </Link>
       <Nav>
         {navigateList.map((navigate) => (
           <NavItem href={navigate.href}>{navigate.name}</NavItem>
