@@ -2,6 +2,7 @@
   "name": "webwaeju",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://158.247.197.244",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
