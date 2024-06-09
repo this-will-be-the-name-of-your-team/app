@@ -11,13 +11,17 @@ import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { styled } from "styled-components";
 import Image from "next/image";
+import { instance } from "@/apis/instance/instance";
 
-const fetchArticles = async () => {
-  const response = await fetch("/api/article");
-  if (!response.ok) {
-    throw new Error("Network response was not ok");
+const getArticles = async () => {
+  try {
+    const { data } = await instance.get("/article");
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error(error);
+    return error;
   }
-  return await response.json();
 };
 
 export default function ArticlePage() {
@@ -25,10 +29,14 @@ export default function ArticlePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const accessToken = process.env.NEXT_PUBLIC_AUTHENTICATED_ACCESS_TOKEN;
   const isAdmin = Storage.getItem("access_token") === accessToken;
   const router = useRouter();
-  const { data, error } = useQuery<{ data: Article[] }, Error>("articles", fetchArticles);
+  const { data, error } = useQuery<{ data: Article[] }, Error>("articles", getArticles);
 
   const handleOpenModal = (article: Article) => {
     setSelectedArticle(article);
@@ -42,10 +50,6 @@ export default function ArticlePage() {
 
   if (error) return <>{error.message}</>;
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
   return (
     <Container>
       <LandingSection>
@@ -58,12 +62,16 @@ export default function ArticlePage() {
         </HGroup>
         <ArticleBox>
           <ArticleList>
-            {data?.data.map((article: Article) => (
-              <ArticleItem key={article.id} onClick={() => handleOpenModal(article)}>
-                <Text>{article.title}</Text>
-                <Image alt="articleImage" src={article.image} fill objectFit="cover" />
-              </ArticleItem>
-            ))}
+            {data?.data ? (
+              data.data.map((article: Article) => (
+                <ArticleItem key={article.id} onClick={() => handleOpenModal(article)}>
+                  <Text>{article.title}</Text>
+                  <Image alt="articleImage" src={article.image} fill objectFit="cover" />
+                </ArticleItem>
+              ))
+            ) : (
+              <></>
+            )}
           </ArticleList>
           {selectedArticle && (
             <ArticleModal
