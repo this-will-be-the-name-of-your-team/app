@@ -10,14 +10,14 @@ const Footer = () => {
         <Text>
           상호명 : 밍글 | 대표 : 황다교
           <br />
-          주소 : 부산광역시 영도구 대교동1가 59
+          주소 : 부산광역시 영도구 봉래나루로 33 부산관광기업지원센터 306-10호
           <br />
-          T. 010-4347-0365 | E. ming9ris@naver.com
+          T. 010-4347-0365 | E. minglemoodcity@gmail.com
         </Text>
       </TextContainer>
       <IconContainer>
         <Icons>
-          <a href="">
+          <a href="https://www.instagram.com/minglemoodcity">
             <InstaLogo />
           </a>
         </Icons>
