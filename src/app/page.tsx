@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <Container>
       <LandingSection>
-        <LandingSectionImg alt="landingImg" src="/landing/landingImg.jpg" fill objectFit="cover" />
+        <LandingSectionVideo src="/landing/mainVideo.mp4" autoPlay loop muted preload="auto" />
         <MainText>MINGLE MOOD</MainText>
         <Row width="100%" justifyContent="center">
           <DetailInfobutton onClick={scrollToTarget}>자세히 알아보기</DetailInfobutton>
@@ -51,8 +51,8 @@ export default function Home() {
       <Section pageName="HIGHLIGHTS">
         <Mood2 />
         <HighlightBoxSection>
-          {HIGHLIGHTS_INFO.map((e, i) => (
-            <HighlightBox year={e.year} content={e.content} backgroundImg={i + 1} />
+          {HIGHLIGHTS_INFO.map((e) => (
+            <HighlightBox year={e.year} content={e.content} backgroundImg={e.image} />
           ))}
         </HighlightBoxSection>
       </Section>
@@ -127,7 +127,15 @@ const LandingSection = styled.section`
   box-sizing: border-box;
 `;
 
-const LandingSectionImg = styled(Image)`
+const LandingSectionVideo = styled.video`
+  width: 100%;
+  height: 90%;
+
+  top: 10%;
+  left: 0;
+  position: absolute;
+  object-fit: cover;
+
   filter: brightness(80%);
   z-index: -100;
 
