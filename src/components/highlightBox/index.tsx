@@ -13,7 +13,7 @@ const HighlightBox = ({ year, content, backgroundImg }: HighlightBoxProperties) 
         <Image
           fill
           alt="highlightbox"
-          src={`/landing/highlights1.png`}
+          src={backgroundImg}
           objectFit="cover"
           style={{ filter: "brightness(80%)" }}
         />

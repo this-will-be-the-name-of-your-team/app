@@ -1,13 +1,16 @@
 "use client";
 
+import { instance } from "@/apis/instance/instance";
 import ModalLayout from "@/components/common/layouts/modalLayout";
+import { Storage } from "@/storage";
 import { font } from "@/styles/generator/font";
 import CloseIcon from "@/styles/svg/closeIcon";
 import { theme } from "@/styles/theme/index";
 import Row from "@/styles/ui/row";
 import { Article } from "@/types/components/Article.type";
 import Image from "next/image";
-import React from "react";
+import { useQueryClient } from "react-query";
+import { useEffect, useState } from "react";
 import { styled } from "styled-components";
 
 interface ArticleModalProps {
@@ -17,15 +20,46 @@ interface ArticleModalProps {
 }
 
 const ArticleModal: React.FC<ArticleModalProps> = ({ article, isOpen, onClose }) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const accessToken = process.env.NEXT_PUBLIC_AUTHENTICATED_ACCESS_TOKEN;
+  const isAdmin = Storage.getItem("access_token") === accessToken;
+
+  const queryClient = useQueryClient();
+  const deleteArticle = async (articleId: number) => {
+    const { data } = await instance.delete(`/article/${articleId}`, {
+      headers: { Authorization: Storage.getItem("access_token") },
+    });
+    return data;
+  };
+
+  const handleDelete = async () => {
+    try {
+      await deleteArticle(article.id).then(() => queryClient.invalidateQueries("articles"));
+      onClose();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <ModalLayout onClick={onClose} animationState={isOpen} brightness="80%" blur="10px">
       <ModalContent>
         <TitleBox>
-          <Row width={"100%"} justifyContent={"space-between"}>
+          <Row width={"100%"} justifyContent={"space-between"} alignItems={"center"}>
             <Title>{article.title}</Title>
-            <CloseButton onClick={onClose}>
-              <CloseIcon />
-            </CloseButton>
+            <Row gap={1} alignItems={"center"}>
+              {isMounted && isAdmin && (
+                <DeleteButton onClick={handleDelete}>글 삭제하기</DeleteButton>
+              )}
+              <CloseButton onClick={onClose}>
+                <CloseIcon />
+              </CloseButton>
+            </Row>
           </Row>
           <GrayHr />
         </TitleBox>
@@ -88,6 +122,16 @@ const GrayHr = styled.hr`
 const CloseButton = styled.button`
   background-color: transparent;
   border: none;
+  cursor: pointer;
+`;
+
+const DeleteButton = styled.button`
+  padding: 0.5rem 1.5rem;
+  background-color: #3b3b3b;
+  color: ${theme.base["white"]};
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.5rem;
   cursor: pointer;
 `;
 
