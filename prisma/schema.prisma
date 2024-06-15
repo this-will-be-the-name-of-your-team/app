@@ -11,5 +11,5 @@ generator client {
 model Post {
   id        Int        @id @default(autoincrement())
   title     String
-  image     String?
+  image     String     @db.Text
 }

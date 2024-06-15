@@ -1,7 +1,10 @@
 "use client";
 
+import Footer from "@/components/Footer";
 import HighlightBox from "@/components/highlightBox";
 import { HIGHLIGHTS_INFO } from "@/constants/landing";
+import { useScroll } from "@/hooks/useScroll";
+import { useGetWorkQuery } from "@/service/main";
 import { font } from "@/styles/generator/font";
 import ArrowIcon from "@/styles/svg/arrowIcon";
 import Mood1 from "@/styles/svg/mood1";
@@ -10,13 +13,10 @@ import { theme } from "@/styles/theme";
 import Column from "@/styles/ui/column";
 import Row from "@/styles/ui/row";
 import Text from "@/styles/ui/text";
+import { Article } from "@/types/components/Article.type";
 import Image from "next/image";
 import Link from "next/link";
-import { CSSProperties, styled, keyframes } from "styled-components";
-import Footer from "@/components/Footer";
-import { useScroll } from "@/hooks/useScroll";
-import { useGetWorkQuery } from "@/service/main";
-import { Article } from "@/types/components/Article.type";
+import { CSSProperties, keyframes, styled } from "styled-components";
 
 export default function Home() {
   const { targetRef, scrollToTarget } = useScroll();
@@ -27,7 +27,14 @@ export default function Home() {
   return (
     <Container>
       <LandingSection>
-        <LandingSectionVideo src="/landing/mainVideo.mp4" autoPlay loop muted preload="auto" />
+        <LandingSectionVideo
+          //   src="https://buma.wiki/api/image/display/이윤찬/video.mp4"
+          src="/landing/mainVideo.mp4"
+          autoPlay
+          loop
+          muted
+          preload="auto"
+        />
         <MainText>MINGLE MOOD</MainText>
         <Row width="100%" justifyContent="center">
           <DetailInfobutton onClick={scrollToTarget}>자세히 알아보기</DetailInfobutton>
