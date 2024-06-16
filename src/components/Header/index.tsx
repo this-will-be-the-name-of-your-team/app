@@ -47,7 +47,7 @@ const Header = () => {
 const HeaderContainer = styled.header`
   ${flex.CENTER}
   width: 100%;
-  height: 5rem;
+  height: 8%;
   display: flex;
   position: fixed;
   left: 0;

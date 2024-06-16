@@ -75,11 +75,13 @@ export default function Home() {
           <WorkBoxSection>
             {workData &&
               workData.data.data.data.length &&
-              workData.data.data.data.map((e: Article) => (
-                <WorkBox width={workBoxWidth[e.id - 1]} content={e.title}>
-                  <WorkBoxImage alt="workboxImg" src={e.image} fill objectFit="cover" />
-                </WorkBox>
-              ))}
+              workData.data.data.data
+                .map((e: Article, i: number) => (
+                  <WorkBox width={workBoxWidth[i]} content={e.title}>
+                    <WorkBoxImage alt="workboxImg" src={e.image} fill objectFit="cover" />
+                  </WorkBox>
+                ))
+                .slice(0, 5)}
           </WorkBoxSection>
         </Column>
       </WorkSection>
@@ -138,7 +140,7 @@ const LandingSectionVideo = styled.video`
   width: 100%;
   height: 90%;
 
-  top: 10%;
+  top: 8%;
   left: 0;
   position: absolute;
   object-fit: cover;
