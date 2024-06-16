@@ -26,7 +26,7 @@ const Page = () => {
             관련 정보를 상세히 남겨주시면 보다 정확한 답변을 드릴 수 있습니다.
           </Text>
         </Column>
-        <ContactButton href={"/contact"}>ming9ris@naver.com</ContactButton>
+        <ContactButton href={"/contact"}>minglemoodcity@gmail.com</ContactButton>
       </ContactSection>
       <Footer />
     </Container>
