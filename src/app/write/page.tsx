@@ -7,13 +7,20 @@ import { theme } from "@/styles/theme";
 import Row from "@/styles/ui/row";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState, useEffect } from "react";
 import { styled } from "styled-components";
 
 const Page = () => {
+  const isAdmin = Storage.getItem("access_token");
   const router = useRouter();
   const [title, setTitle] = useState("");
   const [image, setImage] = useState<string>();
+
+  useEffect(() => {
+    if (!isAdmin) {
+      router.push("/");
+    }
+  }, []);
 
   const handleChangeFileUpload = async (e: ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;

@@ -23,7 +23,6 @@ export default function Home() {
   const [workData] = useGetWorkQuery();
 
   const workBoxWidth = ["65%", "34%", "34%", "65%", "100%"];
-
   return (
     <Container>
       <LandingSection>

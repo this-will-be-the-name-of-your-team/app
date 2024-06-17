@@ -7,6 +7,8 @@ import HeaderLogo from "@/styles/svg/headerLogo";
 import { theme } from "@/styles/theme";
 import Link from "next/link";
 import { styled } from "styled-components";
+import { Storage } from "@/storage";
+import { useRouter } from "next/navigation";
 
 const navigateList = [
   { href: "/", name: "ABOUT" },
@@ -15,7 +17,9 @@ const navigateList = [
 ];
 
 const Header = () => {
+  const isAdmin = Storage.getItem("access_token");
   const targetRef = useHide();
+  const router = useRouter();
 
   const accessToken = process.env.NEXT_PUBLIC_AUTHENTICATED_ACCESS_TOKEN;
   const handleClickLogin = () => {
@@ -24,7 +28,7 @@ const Header = () => {
     if (authorization === accessToken) {
       localStorage.setItem("access_token", authorization);
       alert("로그인 정보가 저장되었습니다.");
-      window.location.reload();
+      router.refresh();
     } else {
       alert("비밀번호가 일치하지 않습니다.");
     }
@@ -38,7 +42,17 @@ const Header = () => {
         {navigateList.map((navigate) => (
           <NavItem href={navigate.href}>{navigate.name}</NavItem>
         ))}
-        <Login onClick={handleClickLogin}>LOGIN</Login>
+        <Login
+          onClick={() => {
+            if (!isAdmin) handleClickLogin();
+            else {
+              Storage.clear();
+              router.refresh();
+            }
+          }}
+        >
+          {isAdmin ? "LOGOUT" : "LOGIN"}
+        </Login>
       </Nav>
     </HeaderContainer>
   );
