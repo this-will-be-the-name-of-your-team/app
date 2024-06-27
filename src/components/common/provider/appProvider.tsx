@@ -2,7 +2,7 @@
 
 import { ReactNode } from "react";
 import { GlobalStyle } from "@/styles/global";
-import StyledComponentsRegistry from "@/app/lib/regisrty";
+import StyledComponentsRegistry from "@/lib/regisrty";
 import Header from "@/components/Header";
 import { QueryClient, QueryClientProvider } from "react-query";
 
